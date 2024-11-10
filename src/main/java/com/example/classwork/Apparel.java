@@ -1,3 +1,6 @@
+package com.example.classwork;
+
+
 public class Apparel {
     String productName;
     String date;
