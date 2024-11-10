@@ -10,14 +10,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class buttonController {
 
     @FXML
-    private TextField textID;
+    private TextField userInput;
 
     @FXML
-    private void calculateButtonPressed(ActionEvent event){
-        textID.setText("Happy Birthday Motherfucker");
+    private TextField userOutput;
+
+    @FXML
+    private void displayUserInput(ActionEvent event){
+        userOutput.setText(userInput);
     }
 }
