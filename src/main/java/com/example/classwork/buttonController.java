@@ -7,12 +7,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class buttonController {
+
+    @FXML
+    public Button buttonID;
 
     @FXML
     private TextField userInput;
@@ -22,6 +26,6 @@ public class buttonController {
 
     @FXML
     private void displayUserInput(ActionEvent event){
-        userOutput.setText(userInput);
+        userOutput.setText(String.valueOf(userInput.getText()));
     }
 }
