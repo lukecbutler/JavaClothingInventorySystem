@@ -18,6 +18,7 @@
    <children>
        <Button fx:id="buttonID" mnemonicParsing="false" onAction="#displayUserInput" text="Press Me!" GridPane.rowIndex="1" />
       <TextField fx:id="userOutput" GridPane.rowIndex="2" />
-      <TextField fx:id="userInput" GridPane.rowIndex="0"/>
+      <TextField fx:id="userInput" />
+
    </children>
 </GridPane>
