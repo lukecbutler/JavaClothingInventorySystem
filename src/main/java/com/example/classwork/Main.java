@@ -8,13 +8,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
         // create list of apparel items to be passed into inventory
         ArrayList<Apparel> apparelItems = new ArrayList<>();
         // create inventory object - storing apparel items
         Inventory inventory = new Inventory(apparelItems);
-
-
 
         int checker = 0;
 
