@@ -51,14 +51,13 @@ public class TipCalculatorController {
 
     public void initialize() {
     	currency.setRoundingMode(RoundingMode.HALF_UP);
-    	
+
     	tipPercentageSlider.valueProperty().addListener(new ChangeListener<Number>() {
     		@Override
     		public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
     			tipPercentage = BigDecimal.valueOf(newValue.intValue() / 100.0);
     			tipPercentageLabel.setText(percent.format(tipPercentage));
     		}
-    				
     	}
     	);
     }
