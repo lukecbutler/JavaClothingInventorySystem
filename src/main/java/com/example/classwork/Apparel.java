@@ -6,12 +6,16 @@ public class Apparel {
     int quantity;
     String size;
     String category;
+    String brand;
+    double price;
 
-    Apparel(String productName, int quantity, String size, String category){
+    Apparel(String productName, int quantity, String size, String category, String brand, double price){
         this.productName = productName;
         this.quantity = quantity;
         this.size = size;
         this.category = category;
+        this.brand = brand;
+        this.price = price;
     }
 
     public String getProductName() {
@@ -46,9 +50,26 @@ public class Apparel {
         this.category = category;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+
     @Override
     public String toString() {
         // fix with correct %s and string formatting
-        return "Product Name: " + getProductName() + "\tNumber of Items: " + getQuantity() + "\tSize: " + getSize() + "\tCategory: " + getCategory();
+        return "Product Name: " + getProductName() + "\tNumber of Items: " + getQuantity() + "\tSize: " + getSize() + "\tCategory: " + getCategory()+ "\tBrand: " + getBrand() + "\tPrice: " + getPrice();
     }
 }

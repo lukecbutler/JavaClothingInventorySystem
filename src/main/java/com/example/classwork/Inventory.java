@@ -39,7 +39,7 @@ public class Inventory {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("currentInventory.csv"))) {
 
             for (Apparel item : apparelItems) {
-                writer.write(item.getProductName() + ',' + item.getQuantity() + ',' + item.getSize() + ',' + item.getCategory());
+                writer.write(item.getProductName() + ',' + item.getQuantity() + ',' + item.getSize() + ',' + item.getCategory()+ ',' + item.getBrand() + ',' + item.getPrice());
                 writer.newLine();
             }
         } catch (Exception e) {
@@ -62,9 +62,11 @@ public class Inventory {
             int quantity = Integer.parseInt(attributes[1]);
             String size = attributes[2];
             String category = attributes[3];
+            String brand = attributes[4];
+            double price = Double.parseDouble(attributes[5]);
 
             // Create an Apparel object
-            Apparel item = new Apparel(productName, quantity, size, category);
+            Apparel item = new Apparel(productName, quantity, size, category, brand, price);
             apparelItems.add(item);
         }
 

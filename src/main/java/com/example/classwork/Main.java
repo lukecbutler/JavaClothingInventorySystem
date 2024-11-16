@@ -41,7 +41,14 @@ public class Main {
                     System.out.println("Enter category of product (Top, Pants, Shoe, Accessory): ");
                     String category = scanner.nextLine();
 
-                    Apparel item = new Apparel(productName, quantity, size, category);
+                    System.out.println("Enter brand of product: ");
+                    String brand = scanner.nextLine();
+
+                    System.out.println("Enter price of product: ");
+                    double price = scanner.nextDouble();
+                    scanner.nextLine(); // Consume newline
+
+                    Apparel item = new Apparel(productName, quantity, size, category, brand, price);
                     inventory.addItem(item);
                     break;
 
