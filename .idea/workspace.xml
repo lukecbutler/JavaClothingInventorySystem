@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/currentInventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/currentInventory.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/Apparel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/Apparel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/TipCalculator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/TipCalculatorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/buttonApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/buttonApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/currentInventory.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/classwork/TipCalculator.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/Apparel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/Apparel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/Inventory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/TipCalculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/TipCalculator.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/TipCalculatorController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/TipCalculatorController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/buttonApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/buttonApp.class" afterDir="false" />
-    </list>
+    <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
