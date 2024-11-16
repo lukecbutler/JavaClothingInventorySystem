@@ -19,5 +19,5 @@ public class guiController {
     private void displayUserInput(ActionEvent event){
         userOutput.setText(String.valueOf(userInput.getText()));
     }
-    
+
 }
