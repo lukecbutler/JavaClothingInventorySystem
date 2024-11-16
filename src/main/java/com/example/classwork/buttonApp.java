@@ -11,7 +11,7 @@ public class buttonApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("button.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
