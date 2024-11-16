@@ -3,13 +3,13 @@ package com.example.classwork;
 
 public class Apparel {
     String productName;
-    String date;
+    int quantity;
     String size;
     String category;
 
-    Apparel(String productName, String date, String size, String category){
+    Apparel(String productName, int quantity, String size, String category){
         this.productName = productName;
-        this.date = date;
+        this.quantity = quantity;
         this.size = size;
         this.category = category;
     }
@@ -18,8 +18,8 @@ public class Apparel {
         return productName;
     }
 
-    public String getDate() {
-        return date;
+    public int getQuantity() {
+        return quantity;
     }
 
     public String getSize() {
@@ -34,8 +34,8 @@ public class Apparel {
         this.productName = productName;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setSize(String size) {
@@ -49,6 +49,6 @@ public class Apparel {
     @Override
     public String toString() {
         // fix with correct %s and string formatting
-        return "Product Name: " + getProductName() + "\tDate Purchased: " + getDate() + "\tSize: " + getSize() + "\tCategory: " + getCategory();
+        return "Product Name: " + getProductName() + "\tNumber of Items: " + getQuantity() + "\tSize: " + getSize() + "\tCategory: " + getCategory();
     }
 }

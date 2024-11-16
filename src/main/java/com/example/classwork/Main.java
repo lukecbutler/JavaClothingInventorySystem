@@ -31,8 +31,9 @@ public class Main {
                     System.out.println("Enter name of product: ");
                     String productName = scanner.nextLine();
 
-                    System.out.println("Enter date product was purchased: ");
-                    String date = scanner.nextLine();
+                    System.out.println("Enter the number of items: ");
+                    int quantity = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
 
                     System.out.println("Enter size of product - if no size enter N/A: ");
                     String size = scanner.nextLine();
@@ -40,7 +41,7 @@ public class Main {
                     System.out.println("Enter category of product (Top, Pants, Shoe, Accessory): ");
                     String category = scanner.nextLine();
 
-                    Apparel item = new Apparel(productName, date, size, category);
+                    Apparel item = new Apparel(productName, quantity, size, category);
                     inventory.addItem(item);
                     break;
 

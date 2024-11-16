@@ -39,7 +39,7 @@ public class Inventory {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("currentInventory.csv"))) {
 
             for (Apparel item : apparelItems) {
-                writer.write(item.getProductName() + ',' + item.getDate() + ',' + item.getSize() + ',' + item.getCategory());
+                writer.write(item.getProductName() + ',' + item.getQuantity() + ',' + item.getSize() + ',' + item.getCategory());
                 writer.newLine();
             }
         } catch (Exception e) {
@@ -48,20 +48,27 @@ public class Inventory {
     }
 
     public ArrayList<Apparel> readCSV() throws IOException {
-
         BufferedReader reader = new BufferedReader(new FileReader("currentInventory.csv"));
-            
-            ArrayList<Apparel> apparelItems = new ArrayList<>();
-            String line;
-            while ((reader.readLine()) != null ){
-                line = reader.readLine();
-                line = line.strip();
-                String[] attributes = line.split(",");
+        ArrayList<Apparel> apparelItems = new ArrayList<>();
+        String line;
 
-                Apparel item = new Apparel(attributes[0],attributes[1],attributes[2],attributes[3]);
-                apparelItems.add(item);
-                
-            }
+        // Read each line of the file
+        while ((line = reader.readLine()) != null) {
+            line = line.strip();
+            String[] attributes = line.split(",");
+
+            // walk thru attributes
+            String productName = attributes[0];
+            int quantity = Integer.parseInt(attributes[1]);
+            String size = attributes[2];
+            String category = attributes[3];
+
+            // Create an Apparel object
+            Apparel item = new Apparel(productName, quantity, size, category);
+            apparelItems.add(item);
+        }
+
+        reader.close(); // Close the reader to release the file handle
         return apparelItems;
     }
 }

@@ -16,6 +16,12 @@ public class buttonApp extends Application {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
+            stage.setHeight(400);
+            stage.setWidth(400);
+            stage.setX(0);
+            stage.setY(0);
+
             stage.setTitle("Button Example");
             stage.show();
         } catch (Exception e) {
