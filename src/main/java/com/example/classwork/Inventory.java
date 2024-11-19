@@ -39,7 +39,7 @@ public class Inventory {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("currentInventory.csv"))) {
 
             for (Apparel item : apparelItems) {
-                writer.write(item.getProductName() + ','
+                writer.write(item.getProduct() + ','
                             + item.getQuantity() + ','
                             + item.getSize() + ','
                             + item.getCategory()+ ','
@@ -64,7 +64,7 @@ public class Inventory {
             String[] attributes = line.split(",");
 
             // walk thru attributes
-            String productName = attributes[0];
+            String product = attributes[0];
             int quantity = Integer.parseInt(attributes[1]);
             String size = attributes[2];
             String category = attributes[3];
@@ -72,7 +72,7 @@ public class Inventory {
             double price = Double.parseDouble(attributes[5]);
 
             // Create an Apparel object
-            Apparel item = new Apparel(productName, quantity, size, category, brand, price);
+            Apparel item = new Apparel(product, quantity, size, category, brand, price);
             apparelItems.add(item);
         }
 

@@ -2,15 +2,15 @@ package com.example.classwork;
 
 
 public class Apparel {
-    String productName;
+    String product;
     int quantity;
     String size;
     String category;
     String brand;
     double price;
 
-    Apparel(String productName, int quantity, String size, String category, String brand, double price){
-        this.productName = productName;
+    Apparel(String product, int quantity, String size, String category, String brand, double price){
+        this.product = product;
         this.quantity = quantity;
         this.size = size;
         this.category = category;
@@ -18,8 +18,8 @@ public class Apparel {
         this.price = price;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getProduct() {
+        return product;
     }
 
     public int getQuantity() {
@@ -34,8 +34,8 @@ public class Apparel {
         return category;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     public void setQuantity(int quantity) {
@@ -70,6 +70,6 @@ public class Apparel {
     @Override
     public String toString() {
         // fix with correct %s and string formatting
-        return "Product Name: " + getProductName() + "\tNumber of Items: " + getQuantity() + "\tSize: " + getSize() + "\tCategory: " + getCategory()+ "\tBrand: " + getBrand() + "\tPrice: " + getPrice();
+        return "Product Name: " + getProduct() + "\tNumber of Items: " + getQuantity() + "\tSize: " + getSize() + "\tCategory: " + getCategory()+ "\tBrand: " + getBrand() + "\tPrice: " + getPrice();
     }
 }
