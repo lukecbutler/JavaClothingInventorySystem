@@ -7,10 +7,9 @@
     <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="yo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/currentInventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/currentInventory.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/Apparel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/Apparel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/guiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/guiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/classwork/gui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/classwork/gui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

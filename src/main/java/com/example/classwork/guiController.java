@@ -78,23 +78,46 @@ public class guiController {
     @FXML
     private void handleCreateProduct() {
 
-        // set a String product name to the text in productField(the text field)
-        String product = productField.getText();
-        int quantity = Integer.parseInt(quantityField.getText());
-        String size = sizeField.getText();
-        String category = categoryField.getText();
-        String brand = brandField.getText();
-        double price = Double.parseDouble(priceField.getText());
+        try {
+            // set a String product name to the text in productField(the text field)
+            String product = productField.getText();
+            int quantity = Integer.parseInt(quantityField.getText());
+            String size = sizeField.getText();
+            String category = categoryField.getText();
+            String brand = brandField.getText();
+            double price = Double.parseDouble(priceField.getText());
+
+            // make sure all string fields have text in them
+            if (product.isEmpty() || size.isEmpty() || category.isEmpty() || brand.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+
+            // create new item
+            Apparel newItem = new Apparel(product, quantity, size, category, brand, price);
+
+            // add item created to inventory and write it to csv
+            inventory.addItem(newItem);
+
+            // put item just created on table
+            tableView.getItems().add(newItem);
+
+        } catch (NumberFormatException e) {
+            // handles string inputs for quantity & price
+            showAlert("Try again bucko", "Please enter valid numbers for quantity and price.");
+        } catch (IllegalArgumentException e) {
+            showAlert("Try again bucko", "All fields must be filled out.");
+        }
+        clearText();
 
 
-        // create new item
-        Apparel newItem = new Apparel(product, quantity, size, category, brand, price);
+    }
 
-        // add item created to inventory and write it to csv
-        inventory.addItem(newItem);
-
-        // put item just created on table
-        tableView.getItems().add(newItem);
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     // loads table from csv on start up
@@ -113,6 +136,17 @@ public class guiController {
         } catch (IOException e) {
             throw new RuntimeException("csv didn't work buddy");
         }
+    }
+
+    @FXML
+    private void clearText(){
+        productField.setText("");
+        quantityField.setText("");
+        sizeField.setText("");
+        categoryField.setText("");
+        brandField.setText("");
+        priceField.setText("");
+
     }
 
     // initilizes columns to sync with text Fields & apparel variable getters

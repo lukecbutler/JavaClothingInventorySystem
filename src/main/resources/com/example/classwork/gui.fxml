@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.classwork.guiController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.classwork.guiController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -33,11 +33,11 @@
 
        <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowSpan="7">
         <columns>
-          <TableColumn fx:id="productColumn" prefWidth="75.0" text="Product" />
+          <TableColumn fx:id="productColumn" prefWidth="125.0" text="Product" />
           <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Size" />
             <TableColumn fx:id="sizeColumn" prefWidth="75.0" text="Category" />
-            <TableColumn fx:id="categoryColumn" minWidth="0.0" prefWidth="73.0" text="Brand" />
-            <TableColumn fx:id="brandColumn" minWidth="1.0" prefWidth="77.0" text="Quantity" />
+            <TableColumn fx:id="categoryColumn" minWidth="0.0" prefWidth="75.0" text="Brand" />
+            <TableColumn fx:id="brandColumn" minWidth="1.0" prefWidth="75.0" text="Quantity" />
             <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
         </columns>
       </TableView>
