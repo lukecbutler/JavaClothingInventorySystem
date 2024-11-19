@@ -53,11 +53,12 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println(inventory.displayApparelItems());
+
+                    //System.out.println(inventory.displayApparelItems(newItem));
                     break;
                 case 3:
 
-                    System.out.println(inventory.displayApparelItems());
+                    //System.out.println(inventory.displayApparelItems(newItem));
                     System.out.println("Enter the item number you wish to delete: ");
                     inventory.deleteItem(scanner.nextInt());
                     break;

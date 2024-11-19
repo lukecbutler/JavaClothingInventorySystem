@@ -4,6 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import java.io.*;
+
 
 import java.util.ArrayList;
 
@@ -13,6 +20,17 @@ public class guiController {
     ArrayList<Apparel> apparelItems = new ArrayList<>();
     // create inventory object - storing apparel items
     Inventory inventory = new Inventory(apparelItems);
+
+    // create new table that takes in Apparel object
+    @FXML
+    private
+    TableView<Apparel> tableView;
+
+
+    // set column to take in apparel object as a string
+    @FXML
+    private TableColumn<Apparel, String> productNameColumn;
+
 
 
     @FXML
@@ -36,24 +54,26 @@ public class guiController {
     @FXML
     public Button addItemButton;
 
-
     @FXML
-    private void displayUserInput(ActionEvent event){
-        //size.setText(String.valueOf(productID.getText()));
+    public void initialize(){
+        handleCreateProduct();
+
     }
 
     @FXML
     private void handleCreateProduct() {
+        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
         String productName = productNameField.getText();
-        int quantity = Integer.parseInt(quantityField.getText());
-        String size = sizeField.getText();
-        String category = categoryField.getText();;
-        String brand = brandField.getText();
-        double price = Double.parseDouble(priceField.getText());
 
-        Apparel newItem = new Apparel(productName, quantity, size, category, brand, price);
+        Apparel newItem = new Apparel(productName, null, null, null, null, null);
 
         inventory.addItem(newItem);
+        tableView.getItems().add(newItem);
+
+        ArrayList<Apparel> apparelItems = new ArrayList<>(tableView.getItems());
+
+        // Call rewriteCSV with the ArrayList
+        inventory.rewriteCSV(apparelItems);
 
     }
 

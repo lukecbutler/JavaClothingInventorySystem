@@ -21,7 +21,7 @@ public class Inventory {
         rewriteCSV(apparelItems);
     }
 
-    public String displayApparelItems() throws IOException {
+    public String displayApparelItems(Apparel newItem) throws IOException {
         ArrayList<Apparel> apparelItems = readCSV();
         String items = "";
         int index = 1; // Start index at 1

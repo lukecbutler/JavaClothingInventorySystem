@@ -4,9 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class buttonApp extends Application {
+public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -16,13 +17,12 @@ public class buttonApp extends Application {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
             stage.setHeight(400);
-            stage.setWidth(400);
+            stage.setWidth(450);
             stage.setX(0);
             stage.setY(0);
 
-            stage.setTitle("Button Example");
+            stage.setTitle("Clothing Inventory");
             stage.show();
         } catch (Exception e) {
             System.out.println("try again bucko");;
