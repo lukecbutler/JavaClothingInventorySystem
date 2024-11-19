@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Inventory {
 
-    ArrayList<Apparel> apparelItems;
+    private final ArrayList<Apparel> apparelItems;
 
     Inventory(ArrayList<Apparel> apparelItems) {
         this.apparelItems = apparelItems;
@@ -39,7 +39,13 @@ public class Inventory {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("currentInventory.csv"))) {
 
             for (Apparel item : apparelItems) {
-                writer.write(item.getProductName() + ',' + item.getQuantity() + ',' + item.getSize() + ',' + item.getCategory()+ ',' + item.getBrand() + ',' + item.getPrice());
+                writer.write(item.getProductName() + ','
+                            + item.getQuantity() + ','
+                            + item.getSize() + ','
+                            + item.getCategory()+ ','
+                            + item.getBrand() + ','
+                            + item.getPrice());
+
                 writer.newLine();
             }
         } catch (Exception e) {

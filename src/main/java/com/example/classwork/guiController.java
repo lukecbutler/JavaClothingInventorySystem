@@ -1,17 +1,16 @@
 package com.example.classwork;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.io.*;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class guiController {
@@ -20,17 +19,6 @@ public class guiController {
     ArrayList<Apparel> apparelItems = new ArrayList<>();
     // create inventory object - storing apparel items
     Inventory inventory = new Inventory(apparelItems);
-
-    // create new table that takes in Apparel object
-    @FXML
-    private
-    TableView<Apparel> tableView;
-
-
-    // set column to take in apparel object as a string
-    @FXML
-    private TableColumn<Apparel, String> productNameColumn;
-
 
 
     @FXML
@@ -54,28 +42,62 @@ public class guiController {
     @FXML
     public Button addItemButton;
 
+
+    // create new table that takes in Apparel object
+    @FXML
+    private TableView<Apparel> tableView;
+
+    // set column to take in apparel object as a string
+    @FXML
+    private TableColumn<Apparel, String> productNameColumn;
+
     @FXML
     public void initialize(){
-        handleCreateProduct();
+        loadTable();
+        initializeColumns(); // maps all columns to the getters in apparel (ie. productNameColumn to productName getter)
+
 
     }
 
     @FXML
     private void handleCreateProduct() {
-        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+
+        // set a String product name to the text in productNameField(the text field)
         String productName = productNameField.getText();
 
-        Apparel newItem = new Apparel(productName, null, null, null, null, null);
+        // create new item
+        Apparel newItem = new Apparel(productName, 0, null, null, null, 0);
 
+        // add item created to inventory and write it to csv
         inventory.addItem(newItem);
+
+        // put item just created on table
         tableView.getItems().add(newItem);
-
-        ArrayList<Apparel> apparelItems = new ArrayList<>(tableView.getItems());
-
-        // Call rewriteCSV with the ArrayList
-        inventory.rewriteCSV(apparelItems);
-
     }
 
+    // loads table from csv on start up
+    @FXML
+    private void loadTable(){
+        try{
 
+            // make sure there is no left over items in list
+            apparelItems.clear();
+            // load data from CSV into apparel Items array List
+            apparelItems.addAll(inventory.readCSV());
+            // convert array list into observable array list bc table view likes it that way
+            ObservableList<Apparel> observableApparelItems = FXCollections.observableArrayList(apparelItems);
+            // populate tabel with our oberservable array list named observableApparelItems
+            tableView.setItems(observableApparelItems);
+        } catch (IOException e) {
+            throw new RuntimeException("csv didn't work buddy");
+        }
+    }
+
+    // initilizes columns to sync with text Fields & apparel variable getters
+    @FXML
+    private void initializeColumns(){
+
+        // maps the getter productName to productNameColumn
+        productNameColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+    }
 }
