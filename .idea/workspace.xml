@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="yo">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/guiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/guiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/classwork/gui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/classwork/gui.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +62,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.classwork.App" />
+      <module name="classWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.classwork.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="331finalProject" />
       <method v="2">
