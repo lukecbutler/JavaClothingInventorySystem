@@ -59,6 +59,9 @@ public class Apparel {
     }
 
     public double getPrice() {
+        String formatPrice = Double.toString(price);
+        formatPrice = String.format("%.2f", price);
+        price = Double.parseDouble(formatPrice);
         return price;
     }
 

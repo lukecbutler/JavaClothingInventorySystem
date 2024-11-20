@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="yo">
-      <change beforePath="$PROJECT_DIR$/currentInventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/currentInventory.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/classwork/gui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/classwork/gui.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/Apparel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/Apparel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/Apparel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/Apparel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/Inventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/classwork/guiController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
