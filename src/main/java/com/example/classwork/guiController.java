@@ -73,6 +73,10 @@ public class guiController {
     @FXML
     private TableColumn<Apparel, Void> incrementColumn;
 
+    @FXML
+    private TableColumn<Apparel, Double> totalPriceColumn;
+
+
 
 
 
@@ -82,7 +86,31 @@ public class guiController {
         loadTable(); // load csv into table
         initializeColumns(); // maps all columns to the getters in apparel (ie. productColumn to product getter)
         initializeQuantityChangeColumns();
+        initializeTotalPriceColumn();
+        formatTotalPriceColumn();
 
+    }
+
+    private void initializeTotalPriceColumn() {
+        totalPriceColumn.setCellValueFactory(cellData -> {
+            Apparel item = cellData.getValue();
+            double totalPrice = item.getPrice() * item.getQuantity();
+            return new javafx.beans.property.SimpleObjectProperty<>(totalPrice); // Return as Double
+        });
+    }
+
+    private void formatTotalPriceColumn() {
+        totalPriceColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("$%.2f", item)); // Format as currency
+                }
+            }
+        });
     }
 
     @FXML
