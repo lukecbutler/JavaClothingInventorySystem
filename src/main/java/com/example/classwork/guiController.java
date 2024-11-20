@@ -87,27 +87,23 @@ public class guiController {
         initializeColumns(); // maps all columns to the getters in apparel (ie. productColumn to product getter)
         initializeQuantityChangeColumns();
         initializeTotalPriceColumn();
-        formatTotalPriceColumn();
+        initializeTotalPriceColumn();
 
     }
 
     private void initializeTotalPriceColumn() {
-        totalPriceColumn.setCellValueFactory(cellData -> {
-            Apparel item = cellData.getValue();
-            double totalPrice = item.getPrice() * item.getQuantity();
-            return new javafx.beans.property.SimpleObjectProperty<>(totalPrice); // Return as Double
-        });
-    }
-
-    private void formatTotalPriceColumn() {
         totalPriceColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Double item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
+                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                    setText(null); // Clear the cell if it's empty
                 } else {
-                    setText(String.format("$%.2f", item)); // Format as currency
+                    // Calculate total price (price * quantity)
+                    Apparel itemData = (Apparel) getTableRow().getItem();
+                    double totalPrice = itemData.getPrice() * itemData.getQuantity();
+                    // Format and display the total price
+                    setText(String.format("$%.2f", totalPrice));
                 }
             }
         });
@@ -156,9 +152,6 @@ public class guiController {
                 setGraphic(empty ? null : incrementButton);
             }
         });
-
-        // Helper method to refresh the table and update the CSV
-
     }
 
     @FXML
@@ -237,7 +230,6 @@ public class guiController {
         categoryField.setText("");
         brandField.setText("");
         priceField.setText("");
-
     }
 
     // initilizes columns to sync with text Fields & apparel variable getters
