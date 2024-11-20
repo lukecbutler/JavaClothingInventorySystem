@@ -69,7 +69,6 @@ public class Apparel {
 
     @Override
     public String toString() {
-        // fix with correct %s and string formatting
-        return "Product: " + getProduct() + "\tNumber of Items: " + getQuantity() + "\tSize: " + getSize() + "\tCategory: " + getCategory()+ "\tBrand: " + getBrand() + "\tPrice: " + getPrice();
+        return String.format("%20s%20s%20s%20s%20s%20s", getProduct(), getQuantity(), getSize(), getCategory(), getBrand(), getPrice());
     }
 }
