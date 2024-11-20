@@ -27,7 +27,7 @@ public class Inventory {
         int index = 1; // Start index at 1
 
         for (Apparel item : apparelItems) {
-            items = items + item.toString() + "[" + index + "]\n";
+            items = items + index + item.toString() + "\n";
             index++;
         }
 
