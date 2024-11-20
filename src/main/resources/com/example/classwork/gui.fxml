@@ -52,7 +52,7 @@
             <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity" />
             <TableColumn fx:id="incrementColumn" prefWidth="75.0" text="Increment" />
             <TableColumn fx:id="decrementColumn" prefWidth="75.0" text="Decrement" />
-            <TableColumn fx:id="totalPriceColumn" text="Total Price" />
+            <TableColumn fx:id="totalPriceColumn" text="Total Inv. Amount" />
 
 
 
