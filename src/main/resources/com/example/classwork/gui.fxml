@@ -39,6 +39,9 @@
             <TableColumn fx:id="brandColumn" minWidth="1.0" prefWidth="75.0" text="Brand" />
             <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
             <TableColumn fx:id="quantityColumn" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="incrementColumn" prefWidth="75.0" text="Increment" />
+            <TableColumn fx:id="decrementColumn" prefWidth="75.0" text="Decrement" />
+
 
         </columns>
       </TableView>

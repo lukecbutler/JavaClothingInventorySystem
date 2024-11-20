@@ -70,6 +70,9 @@ public class guiController {
     @FXML
     private TableColumn<Apparel, Void> decrementColumn;
 
+    @FXML
+    private TableColumn<Apparel, Void> incrementColumn;
+
 
 
 
@@ -78,8 +81,62 @@ public class guiController {
     public void initialize(){
         loadTable(); // load csv into table
         initializeColumns(); // maps all columns to the getters in apparel (ie. productColumn to product getter)
+        initializeQuantityChangeColumns();
 
+    }
 
+    @FXML
+    private void initializeQuantityChangeColumns() {
+        // Decrement Column
+        decrementColumn.setCellFactory(param -> new TableCell<>() {
+            private final Button decrementButton = new Button("-");
+
+            {
+                decrementButton.setOnAction(event -> {
+                    Apparel item = getTableView().getItems().get(getIndex());
+                    if (item.getQuantity() > 1) {
+                        item.setQuantity(item.getQuantity() - 1); // Decrease quantity
+                    } else {
+                        tableView.getItems().remove(item); // Remove item if quantity hits 0
+                    }
+                    refreshTable();
+                });
+            }
+
+            @Override
+            protected void updateItem(Void unused, boolean empty) {
+                super.updateItem(unused, empty);
+                setGraphic(empty ? null : decrementButton);
+            }
+        });
+
+        // Increment Column
+        incrementColumn.setCellFactory(param -> new TableCell<>() {
+            private final Button incrementButton = new Button("+");
+
+            {
+                incrementButton.setOnAction(event -> {
+                    Apparel item = getTableView().getItems().get(getIndex());
+                    item.setQuantity(item.getQuantity() + 1); // Increase quantity
+                    refreshTable();
+                });
+            }
+
+            @Override
+            protected void updateItem(Void unused, boolean empty) {
+                super.updateItem(unused, empty);
+                setGraphic(empty ? null : incrementButton);
+            }
+        });
+
+        // Helper method to refresh the table and update the CSV
+
+    }
+
+    @FXML
+    private void refreshTable() {
+        tableView.refresh(); // Refresh table to display updated quantities
+        inventory.rewriteCSV(new ArrayList<>(tableView.getItems())); // Save changes to CSV
     }
 
     @FXML
@@ -115,8 +172,6 @@ public class guiController {
             showAlert("Try again bucko", "All fields must be filled out.");
         }
         clearText();
-
-
     }
 
     private void showAlert(String title, String message) {
@@ -126,27 +181,6 @@ public class guiController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // loads table from csv on start up
     @FXML
@@ -166,6 +200,7 @@ public class guiController {
         }
     }
 
+    // clear all text fields after user selects add item to inventory
     @FXML
     private void clearText(){
         productField.setText("");
