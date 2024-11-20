@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -65,6 +67,11 @@ public class guiController {
     @FXML
     private TableColumn<Apparel, Double> priceColumn;
 
+    @FXML
+    private TableColumn<Apparel, Void> decrementColumn;
+
+
+
 
 
     @FXML
@@ -119,6 +126,27 @@ public class guiController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // loads table from csv on start up
     @FXML

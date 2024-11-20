@@ -86,7 +86,7 @@ public class Main {
 
                 case 2:
                     System.out.printf("%s%20s%20s%20s%20s%20s%20s\n", "#", "Product", "Amount", "Size", "Category", "Brand", "Price");
-                    System.out.println(inventory.displayApparelItems());
+                    // System.out.println(inventory.displayApparelItems());
                     break;
                 case 3:
 
