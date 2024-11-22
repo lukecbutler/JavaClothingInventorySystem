@@ -1,3 +1,10 @@
+/**
+* @Name: Jack Cole, Chloe Smith, Luke Butler, Reese Larkin, Carter Soderena
+* @Section: CSC 331
+* @Date: 11/24/2024
+* @ProgramPurpose: Holds a list of apparels and gives them properties such as deleting and adding apperals from the list and displaying the apperal in a string. A file is created to store the list
+*/
+
 package com.example.classwork;
 import java.util.ArrayList;
 import java.io.*;
@@ -12,20 +19,24 @@ public class Inventory {
     }
 
     public void addItem(Apparel item) {
+        // Adds an apparel to the list by writing it to the file
         apparelItems.add(item);
         rewriteCSV(apparelItems);
     }
 
     public void deleteItem(int index) {
+        // Removes an apparel from the list by rewriting the file
         apparelItems.remove(index - 1);
         rewriteCSV(apparelItems);
     }
 
     public String displayApparelItems(Apparel newItem) throws IOException {
+        // Reads in the file and displays all of the apparels in the file
         ArrayList<Apparel> apparelItems = readCSV();
         String items = "";
         int index = 1; // Start index at 1
 
+        // The for loop creates a table of each of the apparels properties
         for (Apparel item : apparelItems) {
             items = items + index + item.toString() + "\n";
             index++;
@@ -38,6 +49,7 @@ public class Inventory {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("currentInventory.csv"))) {
 
+            // Reconstructs the inventory file so the list can be updated
             for (Apparel item : apparelItems) {
                 writer.write(item.getProduct() + ','
                             + item.getQuantity() + ','
