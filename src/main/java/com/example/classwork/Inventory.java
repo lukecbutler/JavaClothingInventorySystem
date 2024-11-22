@@ -75,7 +75,7 @@ public class Inventory {
                 writer.newLine();
             }
         } catch (Exception e) {
-            System.out.println("try again");
+            System.out.println("Error creating a new inventory file");
         }
     }
 
