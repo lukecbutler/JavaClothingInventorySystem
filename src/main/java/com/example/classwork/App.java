@@ -17,6 +17,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        /**
+        * @Params: stage
+        * @Purpose: Sets up the scene for the stage
+        */
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
             Parent root = loader.load();
