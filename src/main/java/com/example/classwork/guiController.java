@@ -1,3 +1,10 @@
+/**
+* @Name: Jack Cole, Chloe Smith, Luke Butler, Reese Larkin, Carter Soderena
+* @Section: CSC 331
+* @Date: 11/24/2024
+* @ProgramPurpose: Creates an interactive GUI to run the program from
+*/
+
 package com.example.classwork;
 
 import javafx.collections.FXCollections;
@@ -38,6 +45,9 @@ public class guiController {
 
     @FXML
     public void initialize() {
+        /**
+        * @Purpose: Initializes part of the GUI
+        */
         // Load table and initialize columns
         loadTable();
         initializeColumns();
@@ -50,6 +60,9 @@ public class guiController {
     }
 
     private void initializeColumns() {
+        /**
+        * @Purpose: Initializes the columns of the GUI
+        */
         // Map Apparel attributes to table columns
         productColumn.setCellValueFactory(new PropertyValueFactory<>("product"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -98,6 +111,9 @@ public class guiController {
 
     @FXML
     private void handleCreateProduct() {
+        /**
+        * @Purpose: Allows the user to enter data of an apparel in the GUI and output it into the inventory  
+        */
         try {
             String product = productField.getText();
             int quantity = Integer.parseInt(quantityField.getText());
@@ -128,6 +144,9 @@ public class guiController {
     }
 
     private void updateStoreInventoryWorth() {
+        /**
+        * @Purpose: Updates any changes to the total value of an apparel
+        */
         // Initialize total worth to 0
         double totalWorth = 0.0;
 
@@ -141,6 +160,9 @@ public class guiController {
     }
 
     private void loadTable() {
+        /**
+        * @Purpose: Loads all of the apparel into a table in the GUI
+        */
         try {
             apparelItems.clear();
             apparelItems.addAll(inventory.readCSV());
@@ -152,11 +174,17 @@ public class guiController {
     }
 
     private void refreshTable() {
+        /**
+        * @Purpose: A shortcut to reload the table in the GUI
+        */
         tableView.refresh();
         inventory.rewriteCSV(new ArrayList<>(tableView.getItems()));
     }
 
     private void clearText() {
+        /**
+        * @Purpose: Clears all of the user created text in the GUI
+        */
         productField.clear();
         quantityField.clear();
         sizeField.clear();
@@ -166,6 +194,10 @@ public class guiController {
     }
 
     private void showAlert(String title, String message) {
+        /**
+        * @Params: String, String
+        * @Purpose: Shows an error message to the user if they input incorrect information
+        */
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -175,6 +207,9 @@ public class guiController {
 
     @FXML
     private void initializeQuantityChangeColumns() {
+        /**
+        * @Purpose: Allows the quantity of an apparel to change in the GUI and deletes the apparel if the quantity is 0
+        */
         // Set up decrement column
         decrementColumn.setCellFactory(column -> new TableCell<>() {
             @Override
