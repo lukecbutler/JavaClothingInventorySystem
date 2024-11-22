@@ -115,6 +115,7 @@ public class guiController {
         * @Purpose: Allows the user to enter data of an apparel in the GUI and output it into the inventory  
         */
         try {
+            // Takes all of the user data in the text boxes and puts them into their respected variables
             String product = productField.getText();
             int quantity = Integer.parseInt(quantityField.getText());
             String size = sizeField.getText();
@@ -122,6 +123,7 @@ public class guiController {
             String brand = brandField.getText();
             double price = Double.parseDouble(priceField.getText());
 
+            // If any of the boxes are empty then throw an error
             if (product.isEmpty() || size.isEmpty() || category.isEmpty() || brand.isEmpty()) {
                 throw new IllegalArgumentException("All fields must be filled out.");
             }
@@ -139,6 +141,7 @@ public class guiController {
             // Clear input fields
             clearText();
         } catch (Exception e) {
+            // If any of the text boxes have invalid user data then display an error message
             showAlert("Invalid Input", "Please fill out all fields correctly.");
         }
     }
@@ -164,11 +167,13 @@ public class guiController {
         * @Purpose: Loads all of the apparel into a table in the GUI
         */
         try {
+            // Reads in the inventory file and puts all of the apparels in the table
             apparelItems.clear();
             apparelItems.addAll(inventory.readCSV());
             ObservableList<Apparel> observableApparelItems = FXCollections.observableArrayList(apparelItems);
             tableView.setItems(observableApparelItems);
         } catch (IOException e) {
+            // If the file failed to load then display an error
             showAlert("Error", "Failed to load inventory from CSV.");
         }
     }
@@ -214,6 +219,9 @@ public class guiController {
         decrementColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             public void updateItem(Void unused, boolean empty) {
+                /**
+                * @Purpose: Deletes the apparel if the quantity is 0
+                */
                 super.updateItem(unused, empty);
 
                 try {
@@ -238,7 +246,7 @@ public class guiController {
                     setGraphic(decrementButton); // Set button as the cell's graphic
                 } catch (Exception e) {
                     // Gracefully handle any unexpected errors
-                    System.out.println("Let's run that one agian");
+                    System.out.println("Error at decrement button");
                 }
             }
         });
@@ -267,7 +275,7 @@ public class guiController {
                     setGraphic(incrementButton); // Set button as the cell's graphic
                 } catch (Exception e) {
                     // Gracefully handle any unexpected errors
-                    System.out.println("Let's run that one again");
+                    System.out.println("Error at increment button");
                 }
             }
         });
