@@ -4,167 +4,101 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class guiController {
 
-    // create list of apparel items to be passed into inventory
+    // Create list of apparel items and inventory object
     ArrayList<Apparel> apparelItems = new ArrayList<>();
-    // create inventory object - storing apparel items
     Inventory inventory = new Inventory(apparelItems);
 
+    @FXML
+    private TextField productField, quantityField, sizeField, categoryField, brandField, priceField, storeInventoryWorth;
 
     @FXML
-    private TextField productField;
+    private Button addItemButton;
 
-    @FXML
-    public TextField quantityField;
-
-    @FXML
-    private TextField sizeField;
-
-    @FXML
-    public TextField categoryField;
-
-    @FXML
-    public TextField brandField;
-
-    @FXML
-    public TextField priceField;
-
-    @FXML
-    public Button addItemButton;
-
-
-
-    // create new table that takes in Apparel object
     @FXML
     private TableView<Apparel> tableView;
 
-    // set columns to take in apparel object as a string - set them to respectice attributes
     @FXML
-    private TableColumn<Apparel, String> productColumn;
+    private TableColumn<Apparel, String> productColumn, sizeColumn, categoryColumn, brandColumn;
 
     @FXML
     private TableColumn<Apparel, Integer> quantityColumn;
 
     @FXML
-    private TableColumn<Apparel, String> sizeColumn;
+    private TableColumn<Apparel, Double> priceColumn, totalPriceColumn;
 
     @FXML
-    private TableColumn<Apparel, String> categoryColumn;
+    private TableColumn<Apparel, Void> decrementColumn, incrementColumn;
 
     @FXML
-    private TableColumn<Apparel, String> brandColumn;
+    public void initialize() {
+        // Load table and initialize columns
+        loadTable();
+        initializeColumns();
 
-    @FXML
-    private TableColumn<Apparel, Double> priceColumn;
-
-    @FXML
-    private TableColumn<Apparel, Void> decrementColumn;
-
-    @FXML
-    private TableColumn<Apparel, Void> incrementColumn;
-
-    @FXML
-    private TableColumn<Apparel, Double> totalPriceColumn;
-
-
-
-
-
-
-    @FXML
-    public void initialize(){
-        loadTable(); // load csv into table
-        initializeColumns(); // maps all columns to the getters in apparel (ie. productColumn to product getter)
+        // Add increment and decrement buttons
         initializeQuantityChangeColumns();
-        initializeTotalPriceColumn();
-        initializeTotalPriceColumn();
 
+        // Update the total inventory worth initially
+        updateStoreInventoryWorth();
     }
 
-    private void initializeTotalPriceColumn() {
+    private void initializeColumns() {
+        // Map Apparel attributes to table columns
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("product"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        // Format price column with $ sign
+        priceColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty || price == null) {
+                    setText(null); // Clear cell if empty
+                } else {
+                    setText(String.format("$%.2f", price)); // Format and display price
+                }
+            }
+        });
+
+        // Calculate and display total price (price * quantity) in the total price column
         totalPriceColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Double item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
-                    setText(null); // Clear the cell if it's empty
-                } else {
-                    // Calculate total price (price * quantity)
-                    Apparel itemData = (Apparel) getTableRow().getItem();
+                try {
+                    if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                        setText(null); // Clear the cell if it's empty or invalid
+                        return;
+                    }
+
+                    // Safely retrieve the Apparel item
+                    Apparel itemData = getTableRow().getItem();
                     double totalPrice = itemData.getPrice() * itemData.getQuantity();
-                    // Format and display the total price
-                    setText(String.format("$%.2f", totalPrice));
+                    setText(String.format("$%.2f", totalPrice)); // Format and display total price
+                } catch (Exception e) {
+                    setText(null); // Gracefully handle unexpected errors by clearing the cell
                 }
             }
         });
     }
 
-    @FXML
-    private void initializeQuantityChangeColumns() {
-        // Decrement Column
-        decrementColumn.setCellFactory(param -> new TableCell<>() {
-            private final Button decrementButton = new Button("-");
 
-            {
-                decrementButton.setOnAction(event -> {
-                    Apparel item = getTableView().getItems().get(getIndex());
-                    if (item.getQuantity() > 1) {
-                        item.setQuantity(item.getQuantity() - 1); // Decrease quantity
-                    } else {
-                        tableView.getItems().remove(item); // Remove item if quantity hits 0
-                    }
-                    refreshTable();
-                });
-            }
 
-            @Override
-            protected void updateItem(Void unused, boolean empty) {
-                super.updateItem(unused, empty);
-                setGraphic(empty ? null : decrementButton);
-            }
-        });
-
-        // Increment Column
-        incrementColumn.setCellFactory(param -> new TableCell<>() {
-            private final Button incrementButton = new Button("+");
-
-            {
-                incrementButton.setOnAction(event -> {
-                    Apparel item = getTableView().getItems().get(getIndex());
-                    item.setQuantity(item.getQuantity() + 1); // Increase quantity
-                    refreshTable();
-                });
-            }
-
-            @Override
-            protected void updateItem(Void unused, boolean empty) {
-                super.updateItem(unused, empty);
-                setGraphic(empty ? null : incrementButton);
-            }
-        });
-    }
-
-    @FXML
-    private void refreshTable() {
-        tableView.refresh(); // Refresh table to display updated quantities
-        inventory.rewriteCSV(new ArrayList<>(tableView.getItems())); // Save changes to CSV
-    }
 
     @FXML
     private void handleCreateProduct() {
-
         try {
-            // set a String product name to the text in productField(the text field)
             String product = productField.getText();
             int quantity = Integer.parseInt(quantityField.getText());
             String size = sizeField.getText();
@@ -172,27 +106,63 @@ public class guiController {
             String brand = brandField.getText();
             double price = Double.parseDouble(priceField.getText());
 
-            // make sure all string fields have text in them
             if (product.isEmpty() || size.isEmpty() || category.isEmpty() || brand.isEmpty()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("All fields must be filled out.");
             }
 
-            // create new item
+            // Create new Apparel item
             Apparel newItem = new Apparel(product, quantity, size, category, brand, price);
 
-            // add item created to inventory and write it to csv
+            // Add item to inventory and table
             inventory.addItem(newItem);
-
-            // put item just created on table
             tableView.getItems().add(newItem);
 
-        } catch (NumberFormatException e) {
-            // handles string inputs for quantity & price
-            showAlert("Try again bucko", "Please enter valid numbers for quantity and price.");
-        } catch (IllegalArgumentException e) {
-            showAlert("Try again bucko", "All fields must be filled out.");
+            // Update total inventory worth
+            updateStoreInventoryWorth();
+
+            // Clear input fields
+            clearText();
+        } catch (Exception e) {
+            showAlert("Invalid Input", "Please fill out all fields correctly.");
         }
-        clearText();
+    }
+
+    private void updateStoreInventoryWorth() {
+        // Initialize total worth to 0
+        double totalWorth = 0.0;
+
+        // Iterate through the items in the TableView
+        for (Apparel item : tableView.getItems()) {
+            totalWorth += item.getPrice() * item.getQuantity(); // Add price * quantity to total
+        }
+
+        // Update the storeInventoryWorth TextField
+        storeInventoryWorth.setText(String.format("$%.2f", totalWorth));
+    }
+
+    private void loadTable() {
+        try {
+            apparelItems.clear();
+            apparelItems.addAll(inventory.readCSV());
+            ObservableList<Apparel> observableApparelItems = FXCollections.observableArrayList(apparelItems);
+            tableView.setItems(observableApparelItems);
+        } catch (IOException e) {
+            showAlert("Error", "Failed to load inventory from CSV.");
+        }
+    }
+
+    private void refreshTable() {
+        tableView.refresh();
+        inventory.rewriteCSV(new ArrayList<>(tableView.getItems()));
+    }
+
+    private void clearText() {
+        productField.clear();
+        quantityField.clear();
+        sizeField.clear();
+        categoryField.clear();
+        brandField.clear();
+        priceField.clear();
     }
 
     private void showAlert(String title, String message) {
@@ -203,45 +173,71 @@ public class guiController {
         alert.showAndWait();
     }
 
-    // loads table from csv on start up
     @FXML
-    private void loadTable(){
-        try{
+    private void initializeQuantityChangeColumns() {
+        // Set up decrement column
+        decrementColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            public void updateItem(Void unused, boolean empty) {
+                super.updateItem(unused, empty);
 
-            // make sure there is no leftover items in list
-            apparelItems.clear();
-            // load data from CSV into apparel Items array List
-            apparelItems.addAll(inventory.readCSV());
-            // convert array list into observable array list bc table view likes it that way
-            ObservableList<Apparel> observableApparelItems = FXCollections.observableArrayList(apparelItems);
-            // populate tabel with our oberservable array list named observableApparelItems
-            tableView.setItems(observableApparelItems);
-        } catch (IOException e) {
-            throw new RuntimeException("csv didn't work buddy");
-        }
+                try {
+                    // Ensure the cell is valid and associated with a row
+                    if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    // Create the decrement button
+                    Button decrementButton = new Button("-");
+                    decrementButton.setOnAction(event -> {
+                        Apparel item = getTableRow().getItem();
+                        if (item.getQuantity() > 1) {
+                            item.setQuantity(item.getQuantity() - 1);
+                        } else {
+                            tableView.getItems().remove(item);
+                        }
+                        refreshTable();
+                        updateStoreInventoryWorth();
+                    });
+                    setGraphic(decrementButton); // Set button as the cell's graphic
+                } catch (Exception e) {
+                    // Gracefully handle any unexpected errors
+                    System.out.println("Let's run that one agian");
+                }
+            }
+        });
+
+        // Set up increment column
+        incrementColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            public void updateItem(Void unused, boolean empty) {
+                super.updateItem(unused, empty);
+
+                try {
+                    // Ensure the cell is valid and associated with a row
+                    if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    // Create the increment button
+                    Button incrementButton = new Button("+");
+                    incrementButton.setOnAction(event -> {
+                        Apparel item = getTableRow().getItem();
+                        item.setQuantity(item.getQuantity() + 1);
+                        refreshTable();
+                        updateStoreInventoryWorth();
+                    });
+                    setGraphic(incrementButton); // Set button as the cell's graphic
+                } catch (Exception e) {
+                    // Gracefully handle any unexpected errors
+                    System.out.println("Let's run that one again");
+                }
+            }
+        });
     }
 
-    // clear all text fields after user selects add item to inventory
-    @FXML
-    private void clearText(){
-        productField.setText("");
-        quantityField.setText("");
-        sizeField.setText("");
-        categoryField.setText("");
-        brandField.setText("");
-        priceField.setText("");
-    }
 
-    // initilizes columns to sync with text Fields & apparel variable getters
-    @FXML
-    private void initializeColumns(){
 
-        // map Apparel object getter in it's column
-        productColumn.setCellValueFactory(new PropertyValueFactory<>("product"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-    }
 }
