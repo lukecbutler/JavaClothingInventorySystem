@@ -136,10 +136,13 @@ public class guiController {
 
             // Clear input fields
             clearText();
-        } catch (Exception e) {
-            // If any of the text boxes have invalid user data then display an error message
-            showAlert("Invalid Input", "Please fill out all fields correctly.");
+        } catch (NumberFormatException e) {
+            // handles string inputs for quantity & price
+            showAlert("Invalid Input", "Please enter valid numbers for quantity and price.");
+        } catch (IllegalArgumentException e) {
+            showAlert("Invalid Input", "All fields must be filled out.");
         }
+
     }
 
     /**
