@@ -19,18 +19,28 @@ public class Inventory {
     }
 
     public void addItem(Apparel item) {
-        // Adds an apparel to the list by writing it to the file
+        /**
+        * @Params: apparel
+        * @Purpose: Adds an apparel to the list by writing it to the file
+        */
         apparelItems.add(item);
         rewriteCSV(apparelItems);
     }
 
     public void deleteItem(int index) {
-        // Removes an apparel from the list by rewriting the file
+        /**
+        * @Params: Integer
+        * @Purpose: Removes the apparel at the given index from the list
+        */
         apparelItems.remove(index - 1);
         rewriteCSV(apparelItems);
     }
 
-    public String displayApparelItems(Apparel newItem) throws IOException {
+    public String displayApparelItems() throws IOException {
+        /**
+        * @Returns: String
+        * @Purpose: Takes all apparels in inventory and puts them in a string in a table format
+        */
         // Reads in the file and displays all of the apparels in the file
         ArrayList<Apparel> apparelItems = readCSV();
         String items = "";
@@ -46,6 +56,10 @@ public class Inventory {
     }
 
     public void rewriteCSV(ArrayList<Apparel> apparelItems) {
+        /**
+        * @Params: array of apparels
+        * @Purpose: Writes the list of apparels into a file so it can be easily be updated
+        */
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("currentInventory.csv"))) {
 
@@ -66,6 +80,10 @@ public class Inventory {
     }
 
     public ArrayList<Apparel> readCSV() throws IOException {
+        /**
+        * @Returns: Array of apparels
+        * @Purpose: Reads the file of apparels and creates them into apparels
+        */
         BufferedReader reader = new BufferedReader(new FileReader("currentInventory.csv"));
         ArrayList<Apparel> apparelItems = new ArrayList<>();
         String line;
