@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -59,10 +58,10 @@ public class guiController {
         updateStoreInventoryWorth();
     }
 
+    /**
+     * @Purpose: Initializes the columns of the GUI
+     */
     private void initializeColumns() {
-        /**
-        * @Purpose: Initializes the columns of the GUI
-        */
         // Map Apparel attributes to table columns
         productColumn.setCellValueFactory(new PropertyValueFactory<>("product"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -109,11 +108,11 @@ public class guiController {
 
 
 
+    /**
+     * @Purpose: Allows the user to enter data of an apparel in the GUI and output it into the inventory
+     */
     @FXML
     private void handleCreateProduct() {
-        /**
-        * @Purpose: Allows the user to enter data of an apparel in the GUI and output it into the inventory  
-        */
         try {
             // Takes all of the user data in the text boxes and puts them into their respected variables
             String product = productField.getText();
@@ -146,10 +145,10 @@ public class guiController {
         }
     }
 
+    /**
+     * @Purpose: Updates any changes to the total value of an apparel
+     */
     private void updateStoreInventoryWorth() {
-        /**
-        * @Purpose: Updates any changes to the total value of an apparel
-        */
         // Initialize total worth to 0
         double totalWorth = 0.0;
 
@@ -162,10 +161,10 @@ public class guiController {
         storeInventoryWorth.setText(String.format("$%.2f", totalWorth));
     }
 
+    /**
+     * @Purpose: Loads all of the apparel into a table in the GUI
+     */
     private void loadTable() {
-        /**
-        * @Purpose: Loads all of the apparel into a table in the GUI
-        */
         try {
             // Reads in the inventory file and puts all of the apparels in the table
             apparelItems.clear();
@@ -178,18 +177,18 @@ public class guiController {
         }
     }
 
+    /**
+     * @Purpose: A shortcut to reload the table in the GUI
+     */
     private void refreshTable() {
-        /**
-        * @Purpose: A shortcut to reload the table in the GUI
-        */
         tableView.refresh();
         inventory.rewriteCSV(new ArrayList<>(tableView.getItems()));
     }
 
+    /**
+     * @Purpose: Clears all of the user created text in the GUI
+     */
     private void clearText() {
-        /**
-        * @Purpose: Clears all of the user created text in the GUI
-        */
         productField.clear();
         quantityField.clear();
         sizeField.clear();
@@ -198,11 +197,11 @@ public class guiController {
         priceField.clear();
     }
 
+    /**
+     * @Params: String, String
+     * @Purpose: Shows an error message to the user if they input incorrect information
+     */
     private void showAlert(String title, String message) {
-        /**
-        * @Params: String, String
-        * @Purpose: Shows an error message to the user if they input incorrect information
-        */
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -210,11 +209,11 @@ public class guiController {
         alert.showAndWait();
     }
 
+    /**
+     * @Purpose: Allows the quantity of an apparel to change in the GUI and deletes the apparel if the quantity is 0
+     */
     @FXML
     private void initializeQuantityChangeColumns() {
-        /**
-        * @Purpose: Allows the quantity of an apparel to change in the GUI and deletes the apparel if the quantity is 0
-        */
         // Set up decrement column
         decrementColumn.setCellFactory(column -> new TableCell<>() {
             @Override
