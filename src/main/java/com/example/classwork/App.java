@@ -1,3 +1,10 @@
+/**
+* @Name: Jack Cole, Chloe Smith, Luke Butler, Reese Larkin, Carter Soderena
+* @Section: CSC 331
+* @Date: 11/24/2024
+* @ProgramPurpose: Initiallizes the GUI and displays it
+*/
+
 package com.example.classwork;
 
 import javafx.application.Application;
@@ -13,7 +20,7 @@ public class App extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
             Parent root = loader.load();
-
+            // Sets up the scene
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setHeight(400);
