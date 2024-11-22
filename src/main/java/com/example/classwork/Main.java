@@ -1,3 +1,10 @@
+/**
+* @Name: Jack Cole, Chloe Smith, Luke Butler, Reese Larkin, Carter Soderena
+* @Section: CSC 331
+* @Date: 11/24/2024
+* @ProgramPurpose: Allows the program to be used even without the GUI although with less functionality
+*/
+
 package com.example.classwork;
 
 import java.io.IOException;
