@@ -35,7 +35,7 @@ public class App extends Application {
             stage.setTitle("Clothing Inventory");
             stage.show();
         } catch (Exception e) {
-            System.out.println("try again bucko");;
+            System.out.println("Error seting up the stage. Try again bucko");;
         }
     }
 
