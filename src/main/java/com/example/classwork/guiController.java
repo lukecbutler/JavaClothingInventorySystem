@@ -22,22 +22,56 @@ public class guiController {
     Inventory inventory = new Inventory(apparelItems);
 
     @FXML
-    private TextField productField, quantityField, sizeField, categoryField, brandField, priceField, storeInventoryWorth;
+    private TextField productField;
+
+    @FXML
+    private TextField quantityField;
+
+    @FXML
+    private TextField sizeField;
+
+    @FXML
+    private TextField categoryField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField priceField;
+
+    @FXML
+    private TextField storeInventoryWorth;
 
     @FXML
     private TableView<Apparel> tableView;
 
     @FXML
-    private TableColumn<Apparel, String> productColumn, sizeColumn, categoryColumn, brandColumn;
+    private TableColumn<Apparel, String> productColumn;
+
+    @FXML
+    private TableColumn<Apparel, String> sizeColumn;
+
+    @FXML
+    private TableColumn<Apparel, String> categoryColumn;
+
+    @FXML
+    private TableColumn<Apparel, String> brandColumn;
 
     @FXML
     private TableColumn<Apparel, Integer> quantityColumn;
 
     @FXML
-    private TableColumn<Apparel, Double> priceColumn, totalPriceColumn;
+    private TableColumn<Apparel, Double> priceColumn;
 
     @FXML
-    private TableColumn<Apparel, Void> decrementColumn, incrementColumn;
+    private TableColumn<Apparel, Double> totalPriceColumn;
+
+    @FXML
+    private TableColumn<Apparel, Void> decrementColumn;
+
+    @FXML
+    private TableColumn<Apparel, Void> incrementColumn;
+
 
     @FXML
     public void initialize() {
