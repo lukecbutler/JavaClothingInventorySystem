@@ -25,9 +25,6 @@ public class guiController {
     private TextField productField, quantityField, sizeField, categoryField, brandField, priceField, storeInventoryWorth;
 
     @FXML
-    private Button addItemButton;
-
-    @FXML
     private TableView<Apparel> tableView;
 
     @FXML
