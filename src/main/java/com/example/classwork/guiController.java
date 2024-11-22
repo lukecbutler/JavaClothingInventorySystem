@@ -1,3 +1,10 @@
+/**
+* @Name: Jack Cole, Chloe Smith, Luke Butler, Reese Larkin, Carter Soderena
+* @Section: CSC 331
+* @Date: 11/24/2024
+* @ProgramPurpose: Adds all of the functionality of the GUI
+*/
+
 package com.example.classwork;
 
 import javafx.collections.FXCollections;
