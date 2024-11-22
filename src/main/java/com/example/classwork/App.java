@@ -27,7 +27,7 @@ public class App extends Application {
             // Sets up the scene
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setHeight(400);
+            stage.setHeight(500);
             stage.setWidth(1435);
             stage.setX(0);
             stage.setY(0);
@@ -35,7 +35,7 @@ public class App extends Application {
             stage.setTitle("Clothing Inventory");
             stage.show();
         } catch (Exception e) {
-            System.out.println("Error seting up the stage. Try again bucko");;
+            System.out.println("Error setting up the stage. Try again bucko");;
         }
     }
 
