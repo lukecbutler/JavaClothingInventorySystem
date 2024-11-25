@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="yo">
-      <change beforePath="$PROJECT_DIR$/JavaFinalProject.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/classwork/guiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/classwork/guiController.java" afterDir="false" />
-    </list>
+    <list default="true" id="5b1eba32-8a75-4258-8ef1-5b25c1455e63" name="Changes" comment="yo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,12 +19,12 @@
     &quot;assignee&quot;: &quot;tarheelfan200&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/tarheelfan200/JavaClothingInventorySystem.git&quot;,
-    &quot;accountId&quot;: &quot;e9a64d3a-9a47-4640-9706-c18bac9ad062&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/lukecbutler/JavaClothingInventorySystem.git",
+    "accountId": "e9a64d3a-9a47-4640-9706-c18bac9ad062"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
